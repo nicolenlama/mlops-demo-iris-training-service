@@ -2,6 +2,7 @@
 import pickle
 import pandas as pd
 import numpy as np
+from datetime import date
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -22,13 +23,14 @@ X=data[['sepal length', 'sepal width', 'petal length', 'petal width']]  # Featur
 y=data['species']  # Labels
 
 # Split dataset into training set and test set
-a_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3) # 70% training and 30% test
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3) # 70% training and 30% test
 
 # %%
 #Create a Gaussian Classifier
 model=RandomForestClassifier(n_estimators=100)
 
 #Train the model using the training sets y_pred=clf.predict(X_test)
+print("training model")
 model.fit(X_train,y_train)
 
 y_pred=model.predict(X_test)
@@ -41,9 +43,10 @@ model.predict([[5,3,1.6,0.2]])
 
 # %%
 # save the model to disk
-filename = '../temp_models/iris-model.pkl'
-pickle.dump(model, open(filename, 'wb'))
- 
+date = date.today()
+filename = f'../temp_models/iris-model_{date}.pkl'
+pickle.dump(model, open(filename, 'wb')) 
+print("dumping model to local dir")
 # some time later...
  
 # load the model from disk
