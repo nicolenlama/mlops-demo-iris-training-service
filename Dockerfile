@@ -1,6 +1,6 @@
 FROM registry.fedoraproject.org/f33/python3
 # Install dependencies
-RUN pip install -r requirements.txt
+RUN pip install -r ./requirements.txt
 # Setting Persistent data
 VOLUME [“/temp_models”]
 # Running Python Application
