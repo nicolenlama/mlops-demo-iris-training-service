@@ -1,14 +1,9 @@
 # %%
 import pickle
-
 import pandas as pd
-
 import numpy as np
-
 from sklearn import datasets
-
 from sklearn.model_selection import train_test_split
-
 from sklearn.ensemble import RandomForestClassifier
 
 # %%
@@ -27,7 +22,7 @@ X=data[['sepal length', 'sepal width', 'petal length', 'petal width']]  # Featur
 y=data['species']  # Labels
 
 # Split dataset into training set and test set
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.01) # 70% training and 30% test
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3) # 70% training and 30% test
 
 # %%
 #Create a Gaussian Classifier
@@ -46,7 +41,7 @@ model.predict([[5,3,1.6,0.2]])
 
 # %%
 # save the model to disk
-filename = '../models/iris-model.pkl'
+filename = '../temp_models/iris-model.pkl'
 pickle.dump(model, open(filename, 'wb'))
  
 # some time later...
