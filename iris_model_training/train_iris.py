@@ -15,14 +15,14 @@ data=pd.DataFrame({
     'petal width':iris.data[:,3],
     'species':iris.target
 })
-data.head()
+#data.head()
 
 # %%
 X=data[['sepal length', 'sepal width', 'petal length', 'petal width']]  # Features
 y=data['species']  # Labels
 
 # Split dataset into training set and test set
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3) # 70% training and 30% test
+a_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3) # 70% training and 30% test
 
 # %%
 #Create a Gaussian Classifier
@@ -34,7 +34,7 @@ model.fit(X_train,y_train)
 y_pred=model.predict(X_test)
 
 # %%
-print(X_train)
+#print(X_train)
 
 # %%
 model.predict([[5,3,1.6,0.2]])
