@@ -1,5 +1,6 @@
 # %%
 import pickle
+import boto3
 import pandas as pd
 import numpy as np
 from datetime import date
@@ -7,6 +8,16 @@ from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 
+# Uses the creds in ~/.aws/credentials
+access_key = 'XXXXXXXXXXXXXXXXXXXXXXXxxx'
+secret_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXxxx'
+service_point = 'http://s3.openshift-storage.svc.cluster.local'
+bucketName = 
+s3client = boto3.client('s3','us-east-1', endpoint_url=service_point,
+                       aws_access_key_id = access_key,
+                       aws_secret_access_key = secret_key,
+                        use_ssl = True if 'https' in service_point else False,
+                       verify = False)
 # %%
 iris = datasets.load_iris()
 data=pd.DataFrame({
@@ -44,9 +55,11 @@ model.predict([[5,3,1.6,0.2]])
 # %%
 # save the model to disk
 date = date.today()
-filename = f'../temp_models/iris-model_{date}.pkl'
+fileName = f'../temp_models/iris-model_{date}.pkl'
 pickle.dump(model, open(filename, 'wb')) 
 print("dumping model to local dir")
+s3client.upload_file(model,bucketName,fileName)
+
 # some time later...
  
 # load the model from disk
