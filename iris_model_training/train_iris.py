@@ -57,7 +57,7 @@ model.predict([[5,3,1.6,0.2]])
 # save the model to disk
 date = date.today()
 fileName = f'../temp_models/iris-model_{date}.pkl'
-pickle.dump(model, open(filename, 'wb')) 
+pickle.dump(model, open(fileName, 'wb')) 
 print("dumping model to local dir")
 s3client.upload_file(model,bucketName,fileName)
 
