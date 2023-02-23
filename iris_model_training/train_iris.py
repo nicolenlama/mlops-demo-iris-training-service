@@ -9,10 +9,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 
 # Uses the creds in ~/.aws/credentials
-access_key = 'XXXXXXXXXXXXXXXXXXXXXXXxxx'
-secret_key = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXxxx'
+access_key = 'cIyf0MjSsGhuTUKjhe1U'
+secret_key = 'cgBmTl2kitRoXl2/G6foGaKV8hVSoo7/Ih0W86My'
+endPoint= 's3.openshift-storage.svc:443'
 service_point = 'http://s3.openshift-storage.svc.cluster.local'
-bucketName = 
+bucketName = 'bucket--8a865306-d4ec-453b-ab70-e8cd62ab835e' 
 s3client = boto3.client('s3','us-east-1', endpoint_url=service_point,
                        aws_access_key_id = access_key,
                        aws_secret_access_key = secret_key,
