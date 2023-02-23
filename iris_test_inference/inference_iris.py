@@ -27,7 +27,9 @@ for obj in objects['Contents']:
     print(obj['Key'])
     allFiles.append(obj['Key'])
 
-fileName = allFiles.sort()[0]
+print(allFiles)
+allFiles.sort()
+fileName = allFiles[0]
 s3client.download_file(
     Bucket=bucketName, Key=fileName, Filename="./model"
 )
