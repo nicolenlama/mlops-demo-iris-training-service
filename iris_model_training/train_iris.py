@@ -59,7 +59,8 @@ date = date.today()
 fileName = f'../temp_models/iris-model_{date}.pkl'
 pickle.dump(model, open(fileName, 'wb')) 
 print("dumping model to local dir")
-s3client.upload_file(model,bucketName,fileName)
+print(fileName)
+s3client.upload_file(fileName, bucketName, fileName)
 
 # some time later...
  
